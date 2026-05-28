@@ -30,7 +30,7 @@ export const serviceItems: ServiceItem[] = [
   {
     title: "Toko Alat & Bahan Jahit",
     description:
-      "Perlengkapan menjahit untuk kebutuhan rumah tangga, sekolah, hobi, dan penjahit rumahan sekitar Cikarang.",
+      "Perlengkapan menjahit untuk kebutuhan rumah tangga, sekolah, hobi, dan penjahit rumahan sekitar Cibarusah.",
     examples: ["Kain", "Benang", "Kancing", "Jarum dan resleting"],
     icon: Package,
   },
@@ -107,7 +107,7 @@ export const supplies: SupplyItem[] = [
 export const testimonials: Testimonial[] = [
   {
     name: "Mas Rian",
-    location: "Jababeka",
+    location: "Cibarusah Kota",
     context: "Permak celana kerja",
     quote:
       "Celana kerja kepanjangan bisa selesai cepat dan hasil lipatannya rapi. Enak karena harga dijelaskan dulu sebelum dikerjakan.",
@@ -121,7 +121,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: "Ibu Ratna",
-    location: "Cikarang Baru",
+    location: "Serang Baru",
     context: "Jahit seragam keluarga",
     quote:
       "Jahitannya rapi dan ukurannya pas. Pemiliknya sabar diajak diskusi model, terutama untuk bahan yang kami bawa sendiri.",

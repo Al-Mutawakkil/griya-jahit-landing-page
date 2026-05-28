@@ -1,20 +1,39 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Griya Jahit Cibarusah Landing Page
 
-# Run and deploy your AI Studio app
+Landing page for a local tailor shop in Cibarusah, Kabupaten Bekasi. The page presents two customer paths: clothing alterations/sewing services and sewing tools/material inquiries.
 
-This contains everything you need to run your app locally.
+## Stack
 
-View your app in AI Studio: https://ai.studio/apps/606c4359-a9b2-4f27-9f78-133051567f1e
+- Vite
+- React
+- TypeScript
+- Tailwind CSS
 
-## Run Locally
+## Development
 
-**Prerequisites:**  Node.js
+```bash
+npm install
+npm run dev
+```
 
+The dev server runs on `http://localhost:3000/`.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Build
+
+```bash
+npm run build
+```
+
+## SEO Assets
+
+Generate the Open Graph image:
+
+```bash
+npm run og
+```
+
+The temporary canonical URL targets GitHub Pages:
+
+`https://al-mutawakkil.github.io/griya-jahit-landing-page/`
+
+Replace the URL, phone number, and exact address before publishing with a custom domain.

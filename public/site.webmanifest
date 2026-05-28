@@ -1,0 +1,10 @@
+{
+  "name": "Griya Jahit Cibarusah",
+  "short_name": "Griya Jahit",
+  "description": "Permak pakaian, jahit baju, dan toko alat jahit di Cibarusah, Kabupaten Bekasi.",
+  "start_url": "/griya-jahit-landing-page/",
+  "display": "standalone",
+  "background_color": "#fbf8f1",
+  "theme_color": "#873d28",
+  "lang": "id"
+}

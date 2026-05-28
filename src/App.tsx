@@ -25,13 +25,13 @@ import {
 } from "./data";
 import type { SupplyItem, Testimonial } from "./types";
 
-const heroImage = "/src/assets/images/griya_hero_image_1779882848151.png";
-const suppliesImage = "/src/assets/images/pernak_pernik_jahit_1779882872673.png";
+const heroImage = `${import.meta.env.BASE_URL}images/griya-jahit-workshop.png`;
+const suppliesImage = `${import.meta.env.BASE_URL}images/alat-bahan-jahit.png`;
 
 const repairMessage =
-  "Halo Griya Jahit Cikarang, saya mau tanya permak/jahit pakaian. Saya akan kirim foto kondisi pakaiannya untuk dicek dulu.";
+  "Halo Griya Jahit Cibarusah, saya mau tanya permak/jahit pakaian. Saya akan kirim foto kondisi pakaiannya untuk dicek dulu.";
 const suppliesMessage =
-  "Halo Griya Jahit Cikarang, saya mau tanya stok alat atau bahan jahit. Apakah bisa dibantu cek ketersediaannya?";
+  "Halo Griya Jahit Cibarusah, saya mau tanya stok alat atau bahan jahit. Apakah bisa dibantu cek ketersediaannya?";
 
 const categories: Array<SupplyItem["category"] | "semua"> = [
   "semua",
@@ -88,7 +88,7 @@ export default function App() {
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
             <span className="inline-flex items-center gap-1.5">
               <MapPin size={14} className="text-clay-300" />
-              Cikarang Baru, Jababeka, Bekasi
+              Cibarusah, Kabupaten Bekasi
             </span>
             <span className="inline-flex items-center gap-1.5">
               <Clock size={14} className="text-clay-300" />
@@ -97,7 +97,7 @@ export default function App() {
           </div>
           <a
             className="inline-flex w-fit items-center gap-1.5 font-semibold text-emerald-300 hover:text-emerald-200"
-            href={createWhatsAppUrl("Halo Griya Jahit Cikarang, saya mau bertanya.")}
+            href={createWhatsAppUrl("Halo Griya Jahit Cibarusah, saya mau bertanya.")}
             target="_blank"
             rel="noreferrer"
           >
@@ -109,13 +109,13 @@ export default function App() {
 
       <header className="sticky top-0 z-40 border-b border-stone-200 bg-cream/95 backdrop-blur">
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <a className="flex items-center gap-3" href="#beranda" aria-label="Griya Jahit Cikarang">
+          <a className="flex items-center gap-3" href="#beranda" aria-label="Griya Jahit Cibarusah">
             <span className="grid h-11 w-11 place-items-center rounded-lg bg-clay-700 text-white shadow-sm">
               <Store size={22} />
             </span>
             <span>
               <span className="block font-serif text-xl font-bold leading-none text-stone-950">
-                Griya Jahit Cikarang
+                Griya Jahit Cibarusah
               </span>
               <span className="mt-1 block text-[11px] font-semibold uppercase tracking-wide text-stone-500">
                 Permak, jahit, alat & bahan
@@ -184,13 +184,13 @@ export default function App() {
               </div>
 
               <h1 className="max-w-3xl font-serif text-4xl font-bold leading-tight tracking-tight text-stone-950 sm:text-5xl lg:text-6xl">
-                Permak pakaian cepat & toko alat jahit lengkap di Cikarang
+                Permak pakaian cepat & toko alat jahit lengkap di Cibarusah
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-8 text-stone-650 sm:text-lg">
                 Kami melayani potong celana, ganti resleting, kecilkan ukuran, jahit pakaian dari
                 bahan sendiri, sekaligus menyediakan kain, benang, kancing, jarum, dan perlengkapan
-                mesin jahit untuk kebutuhan harian.
+                mesin jahit untuk kebutuhan harian di Cibarusah dan sekitar Kabupaten Bekasi.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -215,7 +215,7 @@ export default function App() {
               <div className="mt-8 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
                 {[
                   ["Harga jelas", "Disepakati setelah pakaian dicek"],
-                  ["Lokal Cikarang", "Melayani warga sekitar Jababeka"],
+                  ["Lokal Cibarusah", "Melayani sekitar Bekasi Regency"],
                   ["Dua kebutuhan", "Jasa jahit dan toko perlengkapan"],
                 ].map(([title, detail]) => (
                   <div key={title} className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
@@ -232,7 +232,7 @@ export default function App() {
                 <img
                   className="aspect-[4/3] w-full object-cover sm:aspect-[5/4]"
                   src={heroImage}
-                  alt="Interior Griya Jahit Cikarang dengan mesin jahit dan rak kain"
+                  alt="Interior Griya Jahit Cibarusah dengan mesin jahit dan rak kain"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-stone-950/85 to-transparent p-5 text-white">
                   <p className="text-xs font-bold uppercase tracking-wide text-clay-100">Workshop rumah jahit</p>
@@ -408,7 +408,7 @@ export default function App() {
                       <a
                         className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-forest-800 hover:text-forest-900"
                         href={createWhatsAppUrl(
-                          `Halo Griya Jahit Cikarang, saya mau tanya stok ${item.name}. Apakah tersedia?`,
+                          `Halo Griya Jahit Cibarusah, saya mau tanya stok ${item.name}. Apakah tersedia?`,
                         )}
                         target="_blank"
                         rel="noreferrer"
@@ -483,7 +483,7 @@ export default function App() {
               <div className="mt-6 grid gap-4 text-sm text-stone-650">
                 <p className="flex gap-3">
                   <MapPin className="mt-0.5 flex-none text-clay-700" size={19} />
-                  Jl. Cikarang Baru, area Jababeka, Bekasi. Ganti dengan alamat toko lengkap.
+                  Area Cibarusah, Kabupaten Bekasi. Ganti dengan alamat toko lengkap saat siap dipublikasikan.
                 </p>
                 <p className="flex gap-3">
                   <Clock className="mt-0.5 flex-none text-clay-700" size={19} />
@@ -497,7 +497,7 @@ export default function App() {
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <a
                   className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-forest-700 px-6 py-3 text-sm font-bold text-white hover:bg-forest-800"
-                  href={createWhatsAppUrl("Halo Griya Jahit Cikarang, saya mau tanya alamat dan jam buka toko.")}
+                  href={createWhatsAppUrl("Halo Griya Jahit Cibarusah, saya mau tanya alamat dan jam buka toko.")}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -506,7 +506,7 @@ export default function App() {
                 </a>
                 <a
                   className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-stone-250 bg-white px-6 py-3 text-sm font-bold text-stone-800 hover:border-clay-300 hover:text-clay-700"
-                  href="https://maps.google.com/?q=Cikarang%20Baru%20Jababeka%20Bekasi"
+                  href="https://maps.google.com/?q=Cibarusah%20Kabupaten%20Bekasi"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -520,7 +520,7 @@ export default function App() {
               <div className="grid h-full min-h-80 place-items-center bg-[linear-gradient(135deg,#f5efe7_25%,#ffffff_25%,#ffffff_50%,#f5efe7_50%,#f5efe7_75%,#ffffff_75%,#ffffff_100%)] bg-[length:32px_32px] p-8 text-center">
                 <div className="rounded-2xl border border-stone-200 bg-white/95 p-6 shadow-sm">
                   <MapPin className="mx-auto text-clay-700" size={34} />
-                  <p className="mt-3 font-bold text-stone-950">Area Cikarang Baru / Jababeka</p>
+                  <p className="mt-3 font-bold text-stone-950">Area Cibarusah / Kabupaten Bekasi</p>
                   <p className="mt-2 max-w-sm text-sm leading-6 text-stone-600">
                     Placeholder peta. Saat alamat final tersedia, bagian ini bisa diganti dengan embed Google Maps.
                   </p>
@@ -534,7 +534,7 @@ export default function App() {
       <footer className="border-t border-stone-200 bg-stone-950 px-4 py-8 text-stone-300 sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-serif text-lg font-bold text-white">Griya Jahit Cikarang</p>
+            <p className="font-serif text-lg font-bold text-white">Griya Jahit Cibarusah</p>
             <p className="mt-1 text-xs text-stone-400">Permak pakaian, jahit custom, alat & bahan jahit.</p>
           </div>
           <a
@@ -599,7 +599,7 @@ function AnimatedTestimonials({
         <div>
           <div className="inline-flex items-center gap-2 rounded-full bg-clay-100 px-3 py-1.5 text-xs font-bold text-clay-800">
             <Star size={14} fill="currentColor" />
-            Cerita pelanggan sekitar Cikarang
+            Cerita pelanggan sekitar Cibarusah
           </div>
           <h2 className="mt-5 max-w-xl font-serif text-3xl font-bold leading-tight text-stone-950 sm:text-4xl">
             Dipakai untuk kebutuhan harian, bukan hanya acara besar

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://al-mutawakkil.github.io/griya-jahit-landing-page/sitemap.xml
