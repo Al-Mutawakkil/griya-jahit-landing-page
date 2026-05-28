@@ -8,7 +8,6 @@ import {
   MessageCircle,
   PackageSearch,
   Phone,
-  Quote,
   Search,
   Send,
   Star,
@@ -628,35 +627,19 @@ function AnimatedTestimonials({
               </button>
             ))}
           </div>
-
-          <div className="mt-8 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-            {testimonials.map((item, index) => (
-              <button
-                key={item.context}
-                type="button"
-                onClick={() => onChange(index)}
-                className={`rounded-xl border p-4 text-left transition ${
-                  activeIndex === index
-                    ? "border-clay-300 bg-cream shadow-sm"
-                    : "border-stone-200 bg-white hover:border-clay-200 hover:bg-cream/60"
-                }`}
-              >
-                <span className="text-xs font-bold text-clay-700">{item.context}</span>
-                <span className="mt-1 block text-sm font-bold text-stone-950">{item.name}</span>
-                <span className="mt-1 block text-xs text-stone-500">{item.location}</span>
-              </button>
-            ))}
-          </div>
         </div>
 
-        <div className="relative min-h-[430px]">
+        <div className="relative min-h-[430px] pb-6 pr-5">
+          <div className="absolute inset-0 translate-x-5 translate-y-6 rounded-2xl border border-clay-100 bg-clay-100/50" />
+          <div className="absolute inset-0 translate-x-2.5 translate-y-3 rounded-2xl border border-stone-200 bg-cream shadow-sm" />
+
           {testimonials.map((item, index) => (
             <article
               key={item.name}
               className={`absolute inset-0 rounded-2xl border bg-cream p-6 shadow-xl shadow-stone-300/30 transition-all duration-500 sm:p-8 ${
                 activeIndex === index
                   ? "z-10 translate-x-0 scale-100 border-clay-200 opacity-100"
-                  : "z-0 translate-x-8 scale-95 border-stone-200 opacity-0"
+                  : "z-0 -translate-x-3 scale-95 border-stone-200 opacity-0"
               }`}
               aria-hidden={activeIndex !== index}
             >
@@ -673,9 +656,8 @@ function AnimatedTestimonials({
                 </div>
 
                 <div className="relative mt-8 flex-1">
-                  <Quote className="absolute -left-1 -top-3 text-clay-200" size={46} fill="currentColor" />
-                  <p className="relative z-10 max-w-2xl text-xl font-semibold leading-9 text-stone-900 sm:text-2xl sm:leading-10">
-                    "{item.quote}"
+                  <p className="max-w-2xl text-xl font-semibold leading-9 text-stone-900 sm:text-2xl sm:leading-10">
+                    {item.quote}
                   </p>
                 </div>
 
