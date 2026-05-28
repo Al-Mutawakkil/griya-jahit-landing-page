@@ -1,0 +1,6 @@
+{
+  "name": "Griya Jahit Cikarang",
+  "description": "Jasa jahit profesional, alterasi busana, dan toko perlengkapan jahit terlengkap di Cikarang. Ramah, terpercaya, dan pengerjaan tepat waktu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
