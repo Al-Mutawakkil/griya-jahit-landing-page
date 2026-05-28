@@ -12,8 +12,8 @@ Landing page for a local tailor shop in Cibarusah, Kabupaten Bekasi. The page pr
 ## Development
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 The dev server runs on `http://localhost:3000/`.
@@ -21,7 +21,7 @@ The dev server runs on `http://localhost:3000/`.
 ## Build
 
 ```bash
-npm run build
+pnpm build
 ```
 
 ## SEO Assets
@@ -29,7 +29,7 @@ npm run build
 Generate the Open Graph image:
 
 ```bash
-npm run og
+pnpm og
 ```
 
 The temporary canonical URL targets GitHub Pages:
