@@ -86,6 +86,8 @@ export default function App() {
   return (
     <div className="min-h-screen bg-cream text-stone-900">
       <header className="sticky top-0 z-40 border-b border-stone-200 bg-cream/95 backdrop-blur">
+        <AnnouncementStack announcements={announcements} />
+
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <a className="flex items-center gap-3" href="#beranda" aria-label="Toko Jahit Fajar">
             <span className="grid h-11 w-11 place-items-center rounded-lg bg-clay-700 text-white shadow-sm">
@@ -151,8 +153,6 @@ export default function App() {
           </nav>
         )}
       </header>
-
-      <AnnouncementStack announcements={announcements} />
 
       <main id="beranda">
         <section className="overflow-hidden px-4 py-12 sm:px-6 lg:px-8 lg:py-18">
@@ -565,48 +565,26 @@ function SectionIntro({
 }
 
 function AnnouncementStack({ announcements }: { announcements: Announcement[] }) {
-  const [dismissedIds, setDismissedIds] = useState<string[]>([]);
-
-  useEffect(() => {
-    const dismissed = window.localStorage.getItem("toko-jahit-fajar-announcements");
-    if (!dismissed) return;
-
-    try {
-      const parsed = JSON.parse(dismissed);
-      if (Array.isArray(parsed)) setDismissedIds(parsed.filter((id) => typeof id === "string"));
-    } catch {
-      window.localStorage.removeItem("toko-jahit-fajar-announcements");
-    }
-  }, []);
-
   const visibleAnnouncements = announcements.filter((item) => {
-    return item.active !== false && !dismissedIds.includes(item.id);
+    return item.active !== false;
   });
 
   if (visibleAnnouncements.length === 0) return null;
 
-  const dismissAnnouncement = (id: string) => {
-    setDismissedIds((current) => {
-      const next = Array.from(new Set([...current, id]));
-      window.localStorage.setItem("toko-jahit-fajar-announcements", JSON.stringify(next));
-      return next;
-    });
-  };
-
   return (
-    <div className="border-b border-clay-200 bg-clay-100/70 px-4 py-2 sm:px-6 lg:px-8">
-      <div className="mx-auto grid max-w-7xl gap-2">
+    <div className="border-b border-clay-200 bg-clay-100 text-stone-900">
+      <div className="grid">
         {visibleAnnouncements.map((item) => {
           const toneClass =
             item.tone === "urgent"
-              ? "border-red-200 bg-red-50 text-red-950"
+              ? "bg-red-50 text-red-950"
               : item.tone === "notice"
-                ? "border-amber-200 bg-amber-50 text-amber-950"
-                : "border-clay-200 bg-white/80 text-stone-900";
+                ? "bg-amber-50 text-amber-950"
+                : "bg-clay-100 text-stone-900";
 
           const content = (
             <>
-              <Megaphone size={16} className="mt-0.5 flex-none text-clay-700" />
+              <Megaphone size={15} className="mt-0.5 flex-none text-clay-700" />
               <span className="min-w-0 flex-1">
                 {item.label && <strong className="mr-1.5 font-bold">{item.label}</strong>}
                 <span>{item.message}</span>
@@ -617,25 +595,14 @@ function AnnouncementStack({ announcements }: { announcements: Announcement[] })
           return (
             <div
               key={item.id}
-              className={`relative flex items-start gap-2.5 rounded-lg border px-3 py-2 pr-10 text-sm leading-6 shadow-sm ${toneClass}`}
+              className={`flex min-h-10 items-start justify-center px-4 py-2 text-center text-sm leading-6 sm:px-6 lg:px-8 ${toneClass}`}
             >
               {item.href ? (
-                <a className="flex min-w-0 flex-1 items-start gap-2.5 hover:underline" href={item.href}>
+                <a className="flex max-w-7xl items-start justify-center gap-2.5 hover:underline" href={item.href}>
                   {content}
                 </a>
               ) : (
-                <div className="flex min-w-0 flex-1 items-start gap-2.5">{content}</div>
-              )}
-
-              {item.dismissible !== false && (
-                <button
-                  type="button"
-                  aria-label="Tutup pengumuman"
-                  onClick={() => dismissAnnouncement(item.id)}
-                  className="absolute right-2 top-1/2 grid h-7 w-7 -translate-y-1/2 place-items-center rounded-md text-stone-500 hover:bg-black/5 hover:text-stone-900"
-                >
-                  <X size={15} />
-                </button>
+                <div className="flex max-w-7xl items-start justify-center gap-2.5">{content}</div>
               )}
             </div>
           );
