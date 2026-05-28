@@ -1,6 +1,5 @@
 import {
   BadgeCheck,
-  Cog,
   Package,
   Ruler,
   Scissors,

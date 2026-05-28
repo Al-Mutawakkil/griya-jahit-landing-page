@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
   CheckCircle2,
@@ -8,6 +8,7 @@ import {
   MessageCircle,
   PackageSearch,
   Phone,
+  Quote,
   Search,
   Send,
   Star,
@@ -23,7 +24,7 @@ import {
   supplies,
   testimonials,
 } from "./data";
-import type { SupplyItem } from "./types";
+import type { SupplyItem, Testimonial } from "./types";
 
 const heroImage = "/src/assets/images/griya_hero_image_1779882848151.png";
 const suppliesImage = "/src/assets/images/pernak_pernik_jahit_1779882872673.png";
@@ -47,6 +48,7 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<SupplyItem["category"] | "semua">("semua");
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   const filteredSupplies = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -62,6 +64,16 @@ export default function App() {
       return categoryMatches && queryMatches;
     });
   }, [category, query]);
+
+  useEffect(() => {
+    if (testimonials.length <= 1) return;
+
+    const intervalId = window.setInterval(() => {
+      setActiveTestimonial((current) => (current + 1) % testimonials.length);
+    }, 6500);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
 
   const navItems = [
     { label: "Layanan", href: "#layanan" },
@@ -456,32 +468,11 @@ export default function App() {
           </div>
         </section>
 
-        <section className="border-y border-stone-200 bg-white px-4 py-16 sm:px-6 lg:px-8" id="testimoni">
-          <div className="mx-auto max-w-7xl">
-            <SectionIntro
-              eyebrow="Kata pelanggan"
-              title="Dipakai untuk kebutuhan harian, bukan hanya acara besar"
-              description="Testimoni dibagi dari pelanggan permak, pembeli perlengkapan, dan pesanan jahit."
-            />
-            <div className="mt-10 grid gap-5 md:grid-cols-3">
-              {testimonials.map((item) => (
-                <article key={item.name} className="rounded-2xl border border-stone-200 bg-cream p-6 shadow-sm">
-                  <div className="flex gap-1 text-amber-500" aria-label="Rating lima bintang">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <Star key={index} size={16} fill="currentColor" />
-                    ))}
-                  </div>
-                  <p className="mt-5 text-sm leading-7 text-stone-700">"{item.quote}"</p>
-                  <div className="mt-6 border-t border-stone-200 pt-4">
-                    <p className="font-bold text-stone-950">{item.name}</p>
-                    <p className="mt-1 text-xs font-semibold text-clay-700">{item.context}</p>
-                    <p className="mt-1 text-xs text-stone-500">{item.location}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        <AnimatedTestimonials
+          activeIndex={activeTestimonial}
+          onChange={setActiveTestimonial}
+          testimonials={testimonials}
+        />
 
         <section className="px-4 py-16 sm:px-6 lg:px-8" id="lokasi">
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
@@ -588,4 +579,133 @@ function SectionIntro({
       <p className="mt-4 text-sm leading-7 text-stone-600 sm:text-base">{description}</p>
     </div>
   );
+}
+
+function AnimatedTestimonials({
+  activeIndex,
+  onChange,
+  testimonials,
+}: {
+  activeIndex: number;
+  onChange: (index: number) => void;
+  testimonials: Testimonial[];
+}) {
+  const active = testimonials[activeIndex] ?? testimonials[0];
+
+  if (!active) return null;
+
+  return (
+    <section className="overflow-hidden border-y border-stone-200 bg-white px-4 py-16 sm:px-6 lg:px-8" id="testimoni">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+        <div>
+          <div className="inline-flex items-center gap-2 rounded-full bg-clay-100 px-3 py-1.5 text-xs font-bold text-clay-800">
+            <Star size={14} fill="currentColor" />
+            Cerita pelanggan sekitar Cikarang
+          </div>
+          <h2 className="mt-5 max-w-xl font-serif text-3xl font-bold leading-tight text-stone-950 sm:text-4xl">
+            Dipakai untuk kebutuhan harian, bukan hanya acara besar
+          </h2>
+          <p className="mt-4 max-w-xl text-sm leading-7 text-stone-600 sm:text-base">
+            Ulasan ini mewakili tiga kebutuhan utama: permak cepat, belanja perlengkapan jahit,
+            dan jahit pakaian dari bahan sendiri.
+          </p>
+
+          <div className="mt-8 flex items-center gap-2" aria-label="Pilih testimoni">
+            {testimonials.map((item, index) => (
+              <button
+                key={item.name}
+                type="button"
+                onClick={() => onChange(index)}
+                className="grid h-11 place-items-center rounded-full px-1"
+                aria-label={`Lihat testimoni ${item.name}`}
+                aria-pressed={activeIndex === index}
+              >
+                <span
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    activeIndex === index ? "w-10 bg-clay-700" : "w-2.5 bg-stone-300"
+                  }`}
+                />
+              </button>
+            ))}
+          </div>
+
+          <div className="mt-8 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+            {testimonials.map((item, index) => (
+              <button
+                key={item.context}
+                type="button"
+                onClick={() => onChange(index)}
+                className={`rounded-xl border p-4 text-left transition ${
+                  activeIndex === index
+                    ? "border-clay-300 bg-cream shadow-sm"
+                    : "border-stone-200 bg-white hover:border-clay-200 hover:bg-cream/60"
+                }`}
+              >
+                <span className="text-xs font-bold text-clay-700">{item.context}</span>
+                <span className="mt-1 block text-sm font-bold text-stone-950">{item.name}</span>
+                <span className="mt-1 block text-xs text-stone-500">{item.location}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative min-h-[430px]">
+          {testimonials.map((item, index) => (
+            <article
+              key={item.name}
+              className={`absolute inset-0 rounded-2xl border bg-cream p-6 shadow-xl shadow-stone-300/30 transition-all duration-500 sm:p-8 ${
+                activeIndex === index
+                  ? "z-10 translate-x-0 scale-100 border-clay-200 opacity-100"
+                  : "z-0 translate-x-8 scale-95 border-stone-200 opacity-0"
+              }`}
+              aria-hidden={activeIndex !== index}
+            >
+              <div className="flex h-full flex-col">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex gap-1 text-amber-500" aria-label="Rating lima bintang">
+                    {Array.from({ length: 5 }).map((_, starIndex) => (
+                      <Star key={starIndex} size={19} fill="currentColor" />
+                    ))}
+                  </div>
+                  <span className="rounded-full border border-stone-200 bg-white px-3 py-1 text-xs font-bold text-stone-500">
+                    {index + 1} / {testimonials.length}
+                  </span>
+                </div>
+
+                <div className="relative mt-8 flex-1">
+                  <Quote className="absolute -left-1 -top-3 text-clay-200" size={46} fill="currentColor" />
+                  <p className="relative z-10 max-w-2xl text-xl font-semibold leading-9 text-stone-900 sm:text-2xl sm:leading-10">
+                    "{item.quote}"
+                  </p>
+                </div>
+
+                <div className="mt-8 border-t border-stone-200 pt-6">
+                  <div className="flex items-center gap-4">
+                    <div className="grid h-14 w-14 flex-none place-items-center rounded-full border border-clay-200 bg-white font-serif text-xl font-bold text-clay-800">
+                      {getInitials(item.name)}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-stone-950">{item.name}</h3>
+                      <p className="mt-1 text-sm font-semibold text-clay-700">{item.context}</p>
+                      <p className="mt-1 text-sm text-stone-500">{item.location}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
 }
