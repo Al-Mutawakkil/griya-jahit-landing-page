@@ -341,7 +341,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-white/10 bg-white p-5 text-stone-900 shadow-xl">
+              <div className="flex flex-col rounded-2xl border border-white/10 bg-white p-5 text-stone-900 shadow-xl lg:max-h-[760px] lg:overflow-hidden">
                 <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                   <label className="relative block md:w-72">
                     <span className="sr-only">Cari alat jahit</span>
@@ -392,52 +392,54 @@ export default function App() {
                   ))}
                 </div>
 
-                <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                  {filteredSupplies.map((item) => (
-                    <article key={item.id} className="rounded-xl border border-stone-200 bg-stone-50 p-4">
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <p className="text-[11px] font-bold uppercase tracking-wide text-clay-700">
-                            {categoryLabels[item.category]}
-                          </p>
-                          <h3 className="mt-1 text-sm font-bold leading-5 text-stone-950">{item.name}</h3>
+                <div className="mt-5 min-h-0 lg:overflow-y-auto lg:pr-1">
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {filteredSupplies.map((item) => (
+                      <article key={item.id} className="rounded-xl border border-stone-200 bg-stone-50 p-4">
+                        <div className="flex items-start justify-between gap-3">
+                          <div>
+                            <p className="text-[11px] font-bold uppercase tracking-wide text-clay-700">
+                              {categoryLabels[item.category]}
+                            </p>
+                            <h3 className="mt-1 text-sm font-bold leading-5 text-stone-950">{item.name}</h3>
+                          </div>
+                          <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-bold text-stone-500">
+                            {item.note}
+                          </span>
                         </div>
-                        <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-bold text-stone-500">
-                          {item.note}
-                        </span>
-                      </div>
-                      <p className="mt-3 text-xs leading-6 text-stone-600">{item.description}</p>
-                      <a
-                        className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-forest-800 hover:text-forest-900"
-                        href={createWhatsAppUrl(
-                          `Halo Toko Jahit Fajar, saya mau tanya stok ${item.name}. Apakah tersedia?`,
-                        )}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Tanya barang ini
-                        <ArrowRight size={14} />
-                      </a>
-                    </article>
-                  ))}
-                </div>
-
-                {filteredSupplies.length === 0 && (
-                  <div className="mt-5 rounded-xl border border-dashed border-stone-300 bg-stone-50 p-8 text-center">
-                    <PackageSearch className="mx-auto text-stone-400" size={34} />
-                    <p className="mt-3 text-sm font-semibold text-stone-700">Barang tidak ditemukan.</p>
-                    <button
-                      className="mt-2 text-sm font-bold text-clay-700"
-                      type="button"
-                      onClick={() => {
-                        setQuery("");
-                        setCategory("semua");
-                      }}
-                    >
-                      Reset pencarian
-                    </button>
+                        <p className="mt-3 text-xs leading-6 text-stone-600">{item.description}</p>
+                        <a
+                          className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-forest-800 hover:text-forest-900"
+                          href={createWhatsAppUrl(
+                            `Halo Toko Jahit Fajar, saya mau tanya stok ${item.name}. Apakah tersedia?`,
+                          )}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Tanya barang ini
+                          <ArrowRight size={14} />
+                        </a>
+                      </article>
+                    ))}
                   </div>
-                )}
+
+                  {filteredSupplies.length === 0 && (
+                    <div className="rounded-xl border border-dashed border-stone-300 bg-stone-50 p-8 text-center">
+                      <PackageSearch className="mx-auto text-stone-400" size={34} />
+                      <p className="mt-3 text-sm font-semibold text-stone-700">Barang tidak ditemukan.</p>
+                      <button
+                        className="mt-2 text-sm font-bold text-clay-700"
+                        type="button"
+                        onClick={() => {
+                          setQuery("");
+                          setCategory("semua");
+                        }}
+                      >
+                        Reset pencarian
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
