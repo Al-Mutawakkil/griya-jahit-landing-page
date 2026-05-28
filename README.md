@@ -32,6 +32,12 @@ Generate the Open Graph image:
 pnpm og
 ```
 
+## Announcements
+
+Homepage announcement banners are data-driven from `src/data.ts`.
+They stay hidden while `announcements` is an empty array.
+Add one or more active entries there to display temporary shop notices such as holiday hours, new stock, or service interruptions.
+
 The temporary canonical URL targets Vercel:
 
 `https://toko-jahit-fajar.vercel.app/`

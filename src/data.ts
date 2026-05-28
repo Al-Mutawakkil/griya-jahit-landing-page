@@ -7,10 +7,12 @@ import {
   Sparkles,
   Wrench,
 } from "lucide-react";
-import type { ServiceItem, SupplyItem, Testimonial } from "./types";
+import type { Announcement, ServiceItem, SupplyItem, Testimonial } from "./types";
 
 export const WHATSAPP_NUMBER = "628123456789";
 export const DISPLAY_PHONE = "0812-3456-789";
+
+export const announcements: Announcement[] = [];
 
 export const serviceItems: ServiceItem[] = [
   {

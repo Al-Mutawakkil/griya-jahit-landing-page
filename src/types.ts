@@ -21,3 +21,13 @@ export interface Testimonial {
   quote: string;
   context: string;
 }
+
+export interface Announcement {
+  id: string;
+  message: string;
+  label?: string;
+  href?: string;
+  active?: boolean;
+  dismissible?: boolean;
+  tone?: "info" | "notice" | "urgent";
+}

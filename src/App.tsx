@@ -3,6 +3,7 @@ import {
   ArrowRight,
   CheckCircle2,
   Clock,
+  Megaphone,
   MapPin,
   Menu,
   MessageCircle,
@@ -15,6 +16,7 @@ import {
   X,
 } from "lucide-react";
 import {
+  announcements,
   categoryLabels,
   createWhatsAppUrl,
   DISPLAY_PHONE,
@@ -23,7 +25,7 @@ import {
   supplies,
   testimonials,
 } from "./data";
-import type { SupplyItem, Testimonial } from "./types";
+import type { Announcement, SupplyItem, Testimonial } from "./types";
 
 const heroImage = `${import.meta.env.BASE_URL}images/griya-jahit-workshop.png`;
 const suppliesImage = `${import.meta.env.BASE_URL}images/alat-bahan-jahit.png`;
@@ -149,6 +151,8 @@ export default function App() {
           </nav>
         )}
       </header>
+
+      <AnnouncementStack announcements={announcements} />
 
       <main id="beranda">
         <section className="overflow-hidden px-4 py-12 sm:px-6 lg:px-8 lg:py-18">
@@ -556,6 +560,87 @@ function SectionIntro({
       <p className="text-xs font-bold uppercase tracking-widest text-clay-700">{eyebrow}</p>
       <h2 className="mt-3 font-serif text-3xl font-bold text-stone-950 sm:text-4xl">{title}</h2>
       <p className="mt-4 text-sm leading-7 text-stone-600 sm:text-base">{description}</p>
+    </div>
+  );
+}
+
+function AnnouncementStack({ announcements }: { announcements: Announcement[] }) {
+  const [dismissedIds, setDismissedIds] = useState<string[]>([]);
+
+  useEffect(() => {
+    const dismissed = window.localStorage.getItem("toko-jahit-fajar-announcements");
+    if (!dismissed) return;
+
+    try {
+      const parsed = JSON.parse(dismissed);
+      if (Array.isArray(parsed)) setDismissedIds(parsed.filter((id) => typeof id === "string"));
+    } catch {
+      window.localStorage.removeItem("toko-jahit-fajar-announcements");
+    }
+  }, []);
+
+  const visibleAnnouncements = announcements.filter((item) => {
+    return item.active !== false && !dismissedIds.includes(item.id);
+  });
+
+  if (visibleAnnouncements.length === 0) return null;
+
+  const dismissAnnouncement = (id: string) => {
+    setDismissedIds((current) => {
+      const next = Array.from(new Set([...current, id]));
+      window.localStorage.setItem("toko-jahit-fajar-announcements", JSON.stringify(next));
+      return next;
+    });
+  };
+
+  return (
+    <div className="border-b border-clay-200 bg-clay-100/70 px-4 py-2 sm:px-6 lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-2">
+        {visibleAnnouncements.map((item) => {
+          const toneClass =
+            item.tone === "urgent"
+              ? "border-red-200 bg-red-50 text-red-950"
+              : item.tone === "notice"
+                ? "border-amber-200 bg-amber-50 text-amber-950"
+                : "border-clay-200 bg-white/80 text-stone-900";
+
+          const content = (
+            <>
+              <Megaphone size={16} className="mt-0.5 flex-none text-clay-700" />
+              <span className="min-w-0 flex-1">
+                {item.label && <strong className="mr-1.5 font-bold">{item.label}</strong>}
+                <span>{item.message}</span>
+              </span>
+            </>
+          );
+
+          return (
+            <div
+              key={item.id}
+              className={`relative flex items-start gap-2.5 rounded-lg border px-3 py-2 pr-10 text-sm leading-6 shadow-sm ${toneClass}`}
+            >
+              {item.href ? (
+                <a className="flex min-w-0 flex-1 items-start gap-2.5 hover:underline" href={item.href}>
+                  {content}
+                </a>
+              ) : (
+                <div className="flex min-w-0 flex-1 items-start gap-2.5">{content}</div>
+              )}
+
+              {item.dismissible !== false && (
+                <button
+                  type="button"
+                  aria-label="Tutup pengumuman"
+                  onClick={() => dismissAnnouncement(item.id)}
+                  className="absolute right-2 top-1/2 grid h-7 w-7 -translate-y-1/2 place-items-center rounded-md text-stone-500 hover:bg-black/5 hover:text-stone-900"
+                >
+                  <X size={15} />
+                </button>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
