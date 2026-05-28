@@ -83,30 +83,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-cream text-stone-900">
-      <div className="border-b border-stone-200 bg-stone-950 px-4 py-2 text-xs text-stone-100">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
-            <span className="inline-flex items-center gap-1.5">
-              <MapPin size={14} className="text-clay-300" />
-              Cibarusah, Kabupaten Bekasi
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Clock size={14} className="text-clay-300" />
-              Senin-Sabtu, 08.00-18.00
-            </span>
-          </div>
-          <a
-            className="inline-flex w-fit items-center gap-1.5 font-semibold text-emerald-300 hover:text-emerald-200"
-            href={createWhatsAppUrl("Halo Toko Jahit Fajar, saya mau bertanya.")}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Phone size={14} />
-            {DISPLAY_PHONE}
-          </a>
-        </div>
-      </div>
-
       <header className="sticky top-0 z-40 border-b border-stone-200 bg-cream/95 backdrop-blur">
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <a className="flex items-center gap-3" href="#beranda" aria-label="Toko Jahit Fajar">
