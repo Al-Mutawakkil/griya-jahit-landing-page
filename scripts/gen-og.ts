@@ -102,7 +102,7 @@ function buildMarkup() {
                           fontSize: 28,
                           fontWeight: 800,
                         },
-                        children: "GJ",
+                        children: "FJ",
                       },
                     },
                     {
@@ -114,7 +114,7 @@ function buildMarkup() {
                             type: "div",
                             props: {
                               style: { fontSize: 32, fontWeight: 800 },
-                              children: "Griya Jahit Cibarusah",
+                              children: "Toko Jahit Fajar",
                             },
                           },
                           {
@@ -189,7 +189,7 @@ function buildMarkup() {
                     fontWeight: 800,
                     letterSpacing: "-0.035em",
                   },
-                  children: "Permak pakaian cepat & toko alat jahit lengkap",
+                  children: "Toko alat jahit & permak pakaian di Cibarusah",
                 },
               },
               {
@@ -203,7 +203,7 @@ function buildMarkup() {
                     maxWidth: 860,
                   },
                   children:
-                    "Potong celana, ganti resleting, jahit seragam, kain, benang, kancing, jarum, dan perlengkapan mesin jahit.",
+                    "Toko Alat-Alat Jahit Fajar menyediakan bahan jahit, alat mesin jahit, dan layanan permak pakaian praktis.",
                 },
               },
             ],
@@ -220,7 +220,7 @@ function buildMarkup() {
               fontWeight: 700,
               color: "#873d28",
             },
-            children: "Permak & Jahit  •  Alat & Bahan Jahit  •  Kabupaten Bekasi",
+            children: "Alat & Bahan Jahit  •  Permak Pakaian  •  Kabupaten Bekasi",
           },
         },
       ],

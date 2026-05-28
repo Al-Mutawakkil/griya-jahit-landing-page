@@ -5,7 +5,6 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/griya-jahit-landing-page/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

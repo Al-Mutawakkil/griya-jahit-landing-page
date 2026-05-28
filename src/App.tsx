@@ -29,9 +29,9 @@ const heroImage = `${import.meta.env.BASE_URL}images/griya-jahit-workshop.png`;
 const suppliesImage = `${import.meta.env.BASE_URL}images/alat-bahan-jahit.png`;
 
 const repairMessage =
-  "Halo Griya Jahit Cibarusah, saya mau tanya permak/jahit pakaian. Saya akan kirim foto kondisi pakaiannya untuk dicek dulu.";
+  "Halo Toko Jahit Fajar, saya mau tanya permak/jahit pakaian. Saya akan kirim foto kondisi pakaiannya untuk dicek dulu.";
 const suppliesMessage =
-  "Halo Griya Jahit Cibarusah, saya mau tanya stok alat atau bahan jahit. Apakah bisa dibantu cek ketersediaannya?";
+  "Halo Toko Jahit Fajar, saya mau tanya stok alat atau bahan jahit. Apakah bisa dibantu cek ketersediaannya?";
 
 const categories: Array<SupplyItem["category"] | "semua"> = [
   "semua",
@@ -97,7 +97,7 @@ export default function App() {
           </div>
           <a
             className="inline-flex w-fit items-center gap-1.5 font-semibold text-emerald-300 hover:text-emerald-200"
-            href={createWhatsAppUrl("Halo Griya Jahit Cibarusah, saya mau bertanya.")}
+            href={createWhatsAppUrl("Halo Toko Jahit Fajar, saya mau bertanya.")}
             target="_blank"
             rel="noreferrer"
           >
@@ -109,16 +109,16 @@ export default function App() {
 
       <header className="sticky top-0 z-40 border-b border-stone-200 bg-cream/95 backdrop-blur">
         <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <a className="flex items-center gap-3" href="#beranda" aria-label="Griya Jahit Cibarusah">
+          <a className="flex items-center gap-3" href="#beranda" aria-label="Toko Jahit Fajar">
             <span className="grid h-11 w-11 place-items-center rounded-lg bg-clay-700 text-white shadow-sm">
               <Store size={22} />
             </span>
             <span>
               <span className="block font-serif text-xl font-bold leading-none text-stone-950">
-                Griya Jahit Cibarusah
+                Toko Jahit Fajar
               </span>
               <span className="mt-1 block text-[11px] font-semibold uppercase tracking-wide text-stone-500">
-                Permak, jahit, alat & bahan
+                Toko Alat-Alat Jahit Fajar
               </span>
             </span>
           </a>
@@ -184,39 +184,41 @@ export default function App() {
               </div>
 
               <h1 className="max-w-3xl font-serif text-4xl font-bold leading-tight tracking-tight text-stone-950 sm:text-5xl lg:text-6xl">
-                Permak pakaian cepat & toko alat jahit lengkap di Cibarusah
+                Toko Jahit Fajar
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-8 text-stone-650 sm:text-lg">
-                Kami melayani potong celana, ganti resleting, kecilkan ukuran, jahit pakaian dari
-                bahan sendiri, sekaligus menyediakan kain, benang, kancing, jarum, dan perlengkapan
-                mesin jahit untuk kebutuhan harian di Cibarusah dan sekitar Kabupaten Bekasi.
+                Toko Alat-Alat Jahit Fajar menyediakan kain, benang, kancing, jarum, resleting,
+                dan perlengkapan mesin jahit, sekaligus melayani permak pakaian seperti potong
+                celana, ganti resleting, dan jahit sederhana di Cibarusah.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
                   className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-forest-700 px-6 py-3 text-sm font-bold text-white shadow-md hover:bg-forest-800"
+                  href={createWhatsAppUrl(suppliesMessage)}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <PackageSearch size={18} />
+                  Tanya Stok via WhatsApp
+                </a>
+                <a
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-stone-250 bg-white px-6 py-3 text-sm font-bold text-stone-800 shadow-sm hover:border-clay-300 hover:text-clay-700"
                   href={createWhatsAppUrl(repairMessage)}
                   target="_blank"
                   rel="noreferrer"
                 >
                   <Send size={17} />
-                  Kirim Foto via WhatsApp
-                </a>
-                <a
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-stone-250 bg-white px-6 py-3 text-sm font-bold text-stone-800 shadow-sm hover:border-clay-300 hover:text-clay-700"
-                  href="#alat-jahit"
-                >
-                  <PackageSearch size={18} />
-                  Cari Alat Jahit
+                  Kirim Foto Pakaian
                 </a>
               </div>
 
               <div className="mt-8 grid max-w-2xl grid-cols-1 gap-3 sm:grid-cols-3">
                 {[
                   ["Harga jelas", "Disepakati setelah pakaian dicek"],
-                  ["Lokal Cibarusah", "Melayani sekitar Bekasi Regency"],
-                  ["Dua kebutuhan", "Jasa jahit dan toko perlengkapan"],
+                  ["Lokal Cibarusah", "Melayani sekitar Kabupaten Bekasi"],
+                  ["Dua kebutuhan", "Toko perlengkapan dan jasa jahit"],
                 ].map(([title, detail]) => (
                   <div key={title} className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm">
                     <p className="text-sm font-bold text-stone-950">{title}</p>
@@ -232,12 +234,12 @@ export default function App() {
                 <img
                   className="aspect-[4/3] w-full object-cover sm:aspect-[5/4]"
                   src={heroImage}
-                  alt="Interior Griya Jahit Cibarusah dengan mesin jahit dan rak kain"
+                  alt="Interior Toko Jahit Fajar dengan mesin jahit dan rak kain"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-stone-950/85 to-transparent p-5 text-white">
                   <p className="text-xs font-bold uppercase tracking-wide text-clay-100">Workshop rumah jahit</p>
                   <p className="mt-1 text-sm text-stone-100">
-                    Perbaikan pakaian harian dan perlengkapan jahit dalam satu tempat.
+                    Alat jahit, bahan jahit, dan perbaikan pakaian harian dalam satu tempat.
                   </p>
                 </div>
               </div>
@@ -249,8 +251,8 @@ export default function App() {
           <div className="mx-auto max-w-7xl">
             <SectionIntro
               eyebrow="Pilih kebutuhan Anda"
-              title="Dua jalur yang jelas untuk pelanggan yang berbeda"
-              description="Walk-in alteration dan pembeli perlengkapan jahit punya tujuan berbeda, jadi halaman ini memisahkannya sejak awal."
+              title="Belanja alat jahit atau tanya permak pakaian"
+              description="Pembeli perlengkapan jahit dan pelanggan permak punya tujuan berbeda, jadi halaman ini memisahkannya sejak awal."
             />
 
             <div className="mt-10 grid gap-5 lg:grid-cols-3">
@@ -408,7 +410,7 @@ export default function App() {
                       <a
                         className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-forest-800 hover:text-forest-900"
                         href={createWhatsAppUrl(
-                          `Halo Griya Jahit Cibarusah, saya mau tanya stok ${item.name}. Apakah tersedia?`,
+                          `Halo Toko Jahit Fajar, saya mau tanya stok ${item.name}. Apakah tersedia?`,
                         )}
                         target="_blank"
                         rel="noreferrer"
@@ -497,7 +499,7 @@ export default function App() {
               <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                 <a
                   className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-forest-700 px-6 py-3 text-sm font-bold text-white hover:bg-forest-800"
-                  href={createWhatsAppUrl("Halo Griya Jahit Cibarusah, saya mau tanya alamat dan jam buka toko.")}
+                  href={createWhatsAppUrl("Halo Toko Jahit Fajar, saya mau tanya alamat dan jam buka toko.")}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -534,7 +536,7 @@ export default function App() {
       <footer className="border-t border-stone-200 bg-stone-950 px-4 py-8 text-stone-300 sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="font-serif text-lg font-bold text-white">Griya Jahit Cibarusah</p>
+            <p className="font-serif text-lg font-bold text-white">Toko Jahit Fajar</p>
             <p className="mt-1 text-xs text-stone-400">Permak pakaian, jahit custom, alat & bahan jahit.</p>
           </div>
           <a

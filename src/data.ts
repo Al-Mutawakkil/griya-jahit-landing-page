@@ -14,6 +14,13 @@ export const DISPLAY_PHONE = "0812-3456-789";
 
 export const serviceItems: ServiceItem[] = [
   {
+    title: "Toko Alat & Bahan Jahit",
+    description:
+      "Perlengkapan menjahit untuk kebutuhan rumah tangga, sekolah, hobi, dan penjahit rumahan sekitar Cibarusah.",
+    examples: ["Kain", "Benang", "Kancing", "Jarum dan resleting"],
+    icon: Package,
+  },
+  {
     title: "Permak & Reparasi Cepat",
     description:
       "Untuk pakaian harian yang perlu segera dipakai kembali. Kami cek kondisi dulu supaya harga dan waktu pengerjaan jelas di awal.",
@@ -26,13 +33,6 @@ export const serviceItems: ServiceItem[] = [
       "Jahit baju dari bahan sendiri untuk kebutuhan kerja, sekolah, keluarga, acara, atau pesanan satuan.",
     examples: ["Kemeja", "Seragam", "Gamis", "Kebaya sederhana"],
     icon: Shirt,
-  },
-  {
-    title: "Toko Alat & Bahan Jahit",
-    description:
-      "Perlengkapan menjahit untuk kebutuhan rumah tangga, sekolah, hobi, dan penjahit rumahan sekitar Cibarusah.",
-    examples: ["Kain", "Benang", "Kancing", "Jarum dan resleting"],
-    icon: Package,
   },
 ];
 

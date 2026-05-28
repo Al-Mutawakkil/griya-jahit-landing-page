@@ -1,6 +1,6 @@
-# Griya Jahit Cibarusah Landing Page
+# Toko Jahit Fajar Landing Page
 
-Landing page for a local tailor shop in Cibarusah, Kabupaten Bekasi. The page presents two customer paths: clothing alterations/sewing services and sewing tools/material inquiries.
+Landing page for Toko Alat-Alat Jahit "Fajar", a local sewing supplies shop and practical alteration service in Cibarusah, Kabupaten Bekasi. The page presents two customer paths: sewing tools/material inquiries and clothing alterations/sewing services.
 
 ## Stack
 
@@ -32,8 +32,9 @@ Generate the Open Graph image:
 pnpm og
 ```
 
-The temporary canonical URL targets GitHub Pages:
+The temporary canonical URL targets Vercel:
 
-`https://al-mutawakkil.github.io/griya-jahit-landing-page/`
+`https://toko-jahit-fajar.vercel.app/`
 
 Replace the URL, phone number, and exact address before publishing with a custom domain.
+Planned custom domain: `tokojahitfajar.com`.

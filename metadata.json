@@ -1,6 +1,6 @@
 {
-  "name": "Griya Jahit Cibarusah",
-  "description": "Permak pakaian, jahit baju, dan toko alat jahit di Cibarusah, Kabupaten Bekasi.",
+  "name": "Toko Jahit Fajar",
+  "description": "Toko Alat-Alat Jahit Fajar menyediakan alat dan bahan jahit serta layanan permak pakaian di Cibarusah, Kabupaten Bekasi.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
